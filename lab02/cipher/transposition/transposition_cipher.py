@@ -2,7 +2,6 @@ import math
 class TranspositionCipher:
     def __init__(self):
         pass
-
     def encrypt(self, text, key):
         ciphertext = [''] * key
         for col in range(key):
@@ -19,7 +18,6 @@ class TranspositionCipher:
         plaintext = [''] * num_cols
         col = 0
         row = 0
-
         for symbol in text:
             plaintext[col] += symbol
             col += 1
