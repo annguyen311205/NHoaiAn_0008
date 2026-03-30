@@ -6,7 +6,6 @@ def encode_image(image_path, message):
     width, height = img.size
     binary_message = ''.join(format(ord(char), '08b') for char in message)
     binary_message += '1111111111111110' 
-    
     data_index = 0
     for row in range(height):
         for col in range(width):

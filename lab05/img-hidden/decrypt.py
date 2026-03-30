@@ -2,7 +2,6 @@ import sys
 from PIL import Image
 
 def decode_image(encoded_image_path):
-    # Mở ảnh đã được mã hóa
     img = Image.open(encoded_image_path)
     width, height = img.size
     binary_message = ""
@@ -13,7 +12,6 @@ def decode_image(encoded_image_path):
             pixel = img.getpixel((col, row))
             
             for color_channel in range(3):
-                # Trích xuất bit cuối cùng của mỗi kênh màu
                 binary_message += format(pixel[color_channel], '08b')[-1]
 
     message = ""
@@ -21,8 +19,7 @@ def decode_image(encoded_image_path):
         byte = binary_message[i:i+8]
         char = chr(int(byte, 2))
         
-        # Kiểm tra dấu hiệu kết thúc thông điệp khi gặp ký tự '\0'
-        if char == '\0': # Kết thúc thông điệp khi gặp dấu '\0'
+        if char == '\0': 
             break
         message += char
         
@@ -32,7 +29,6 @@ def main():
     if len(sys.argv) != 2:
         print("Usage: python decrypt.py <encoded_image_path>")
         return
-        
     encoded_image_path = sys.argv[1]
     decoded_message = decode_image(encoded_image_path)
     print("Decoded message:", decoded_message)
